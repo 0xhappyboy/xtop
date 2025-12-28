@@ -12,7 +12,7 @@ pub struct SystemInfo {
     pub cpu_usage_per_core: Vec<u64>,
     pub cpu_total_usage: u64,
     pub cpu_frequency: u64, // MHz
-    pub cpu_temperature: f64,
+    pub cpu_temperature: f32,
     pub cpu_model: String,
     // Memory Information
     pub memory_total: u64,     // MB
@@ -56,6 +56,22 @@ pub struct DiskInfo {
     pub read_speed: u64,  // MB/s
     pub write_speed: u64, // MB/s
     pub device_type: String,
+}
+
+impl Default for DiskInfo {
+    fn default() -> Self {
+        Self {
+            name: "N/A".to_string(),
+            mount_point: "/".to_string(),
+            total: 0,
+            used: 0,
+            free: 0,
+            usage: 0,
+            read_speed: 0,
+            write_speed: 0,
+            device_type: "".to_string(),
+        }
+    }
 }
 
 #[derive(Debug, Clone)]

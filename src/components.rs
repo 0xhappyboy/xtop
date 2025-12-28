@@ -39,15 +39,9 @@ pub fn render_footer<'a>(
     show_help: bool,
 ) -> Paragraph<'a> {
     let footer_text = if show_help {
-        "[q]uit [1-6]views [↑↓]scroll [←→]sort [F1]help [F5]tree [F6]aggregate [space]pause [r]eset"
+        "[q]uit [↑↓]scroll [c/m]sort [F1]help [f]fullcmd [space]pause [+-]speed"
     } else {
-        match current_view {
-            "System" => "[F1]Help [1]System [2]Process [3]Resources [4]Network [5]Disks [6]Options",
-            "Process" => {
-                "[F1]Help [↑↓]Select [Enter]Details [c]CPU [m]Memory [p]PID [n]Name [f]FullCmd"
-            }
-            _ => "[F1]Help [Tab]NextView [q]Quit [space]Pause [+-]Speed",
-        }
+        "[F1]Help [↑↓]Select [c/m]Sort [f]FullCmd [space]Pause [+-]Speed [q]Quit"
     };
     Paragraph::new(footer_text)
         .style(Style::default().fg(theme.text_dim).bg(theme.bg_dark))
